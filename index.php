@@ -1,19 +1,21 @@
 <!-- DATI -->
  <?php
+
  $pwLength = (int)($_GET["pwlength"] ?? 8);
 
- function pwGenerator ($length) {
-    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?';
-    $newPassword = "";
+ require_once'./functions.php';
 
-    $maxIndex = strlen($chars) - 1;
+ $passwordGenerata = pwGenerator($pwLength);
 
-    for ($i = 0; $i < $length; $i++) {
-        $randomIndex = random_int(0, $maxIndex);
-        $newPassword .= $chars[$randomIndex];
-    }
+ if ($passwordGenerata != "") {
 
-    return $newPassword;
+  session_start();
+
+  $_SESSION['password'] = $passwordGenerata;
+  $_SESSION['length'] = $pwLength;
+
+  header("Location: ./password.php");
+
  }
  
  ?>
@@ -71,7 +73,7 @@
   </div> -->
   <button type="submit" class="btn btn-primary">Genera</button>
 </form>
-<h2>La tua password è: <?php echo pwGenerator($pwLength) ?></h2>
+
         </main>
     </section>
 </body>
