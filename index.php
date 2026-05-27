@@ -1,6 +1,6 @@
 <!-- DATI -->
  <?php
- $pwLength = (int)$_GET["pwlength"] ?? 8;
+ $pwLength = (int)($_GET["pwlength"] ?? 8);
 
  function pwGenerator ($length) {
     $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?';
@@ -71,7 +71,7 @@
   </div> -->
   <button type="submit" class="btn btn-primary">Genera</button>
 </form>
-<h2><?php echo pwGenerator($pwLength) ?></h2>
+<h2>La tua password è: <?php echo pwGenerator($pwLength) ?></h2>
         </main>
     </section>
 </body>
