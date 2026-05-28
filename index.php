@@ -1,24 +1,24 @@
 <!-- DATI -->
+
  <?php
 
- $pwLength = (int)($_GET["pwlength"] ?? 8);
+if (isset($_GET["pwlength"])) {
 
- require_once'./functions.php';
+    $pwLength = (int)$_GET["pwlength"];
 
- $passwordGenerata = pwGenerator($pwLength);
+    require_once './functions.php';
 
- if ($passwordGenerata != "") {
+    $passwordGenerata = pwGenerator($pwLength);
 
-  session_start();
+    if ($passwordGenerata != "") {
+        session_start();
+        $_SESSION['password'] = $passwordGenerata;
 
-  $_SESSION['password'] = $passwordGenerata;
-  $_SESSION['length'] = $pwLength;
-
-  header("Location: ./password.php");
-
- }
- 
- ?>
+        header("Location: ./password.php");
+        exit; 
+    }
+}
+?>
  <!-- HTML -->
 <!DOCTYPE html>
 <html lang="en">

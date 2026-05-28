@@ -14,6 +14,7 @@ $password = $_SESSION['password'];
     <title>Password:</title>
 </head>
 <body>
- <h1>La tua password è: <?php echo $password ?></h1>
+ <h1>La tua password di <?php echo strlen($password) ?> caratteri è: <?php echo $password ?></h1>
+ <nav><a href="./index.php">Torna indietro</a></nav>
 </body>
 </html>
